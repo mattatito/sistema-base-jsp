@@ -224,11 +224,8 @@ public class ProdutoDao {
 	}
 	
 	
-	
-	//v gabriel
-	
 	//Método para retornar a tabela em código HTML	
-	public String selecionar() {
+	public String selecionar(int idCliente) {
 	
 		//Iniciar estrutura
 		String estrutura = "<table class='table table-sm table-white'>";
@@ -246,9 +243,10 @@ public class ProdutoDao {
 		//Conexao
 		Connection conexao = Conexao.obterConexao();
 		try {
-			String sql = "SELECT * FROM produtos";
-			Statement stmt = conexao.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
+			String sql = "SELECT * FROM produtos WHERE fkCliente=?";
+			PreparedStatement pstmt = conexao.prepareStatement(sql);
+			pstmt.setInt(1, idCliente);
+			ResultSet rs = pstmt.executeQuery(sql);
 
 			//Adicionando as linhas
 			while(rs.next()){
@@ -257,12 +255,13 @@ public class ProdutoDao {
 					estrutura+="<td>"+rs.getInt(1)+"</td>";
 					estrutura+="<td>"+rs.getString(2)+"</td>";
 					estrutura+="<td>"+rs.getString(3)+"</td>";
-					estrutura+="<td><a href='produto.jsp?idProduto="+rs.getInt(1)+"'>Comprar</a></td>";
+					estrutura+="<td><a href='index.jsp?idProduto="+rs.getInt(1)+"'>Comprar</a></td>";
 				estrutura+="</tr>";
 			}
+			
 			//Fechando
 			rs.close();
-			stmt.close();
+			pstmt.close();
 			conexao.close();
 						
 		} catch (Exception erro) {

@@ -42,6 +42,7 @@
   	
   	width: 1000px;
 	 margin: 10px auto;
+	 padding: 10px;
   	}
   </style>
 
@@ -247,7 +248,7 @@ int fkCliente = Integer.parseInt(request.getParameter("User"));
                   <div id="success"></div>
                   <div class="form-group">
                   <input type="submit" class="btn btn-primary btn-xl" id="sendMessageButton" value="Alterar">
-                  <a href="requisicoes/cancelar.jsp?idCliente="<%out.print(fkCliente);%>">Cancelar</a> 
+                  <a href="requisicoes/cancelar.jsp?idCliente="<%out.print(request.getParameter("fkCliente"));%>">Cancelar</a> 
                  </div>
               
               </form>
@@ -257,7 +258,7 @@ int fkCliente = Integer.parseInt(request.getParameter("User"));
 				}
 						
 				%>
-		
+				
 				<%
 				
 				int idCliente = Integer.parseInt(request.getParameter("User"));

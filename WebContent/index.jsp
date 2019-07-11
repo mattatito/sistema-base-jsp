@@ -186,7 +186,7 @@
       <div class="row">
         <div class="col-lg-8 mx-auto">
          <!-- Para configurar o formul�rio de contato endere�o de email, ir para mail/contact_me.php e atualize o endere�o de email no arquivo PhP na linha 19-->
-          <form action="requisicao/Usuario.jsp">
+          <form action="requisicao/cadastrarUsuario.jsp">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
                 <label>Nome</label>
@@ -380,7 +380,7 @@
 	<%
 	
 	ProdutoDao cd = new ProdutoDao();
-	out.print(cd.selecionar());
+	out.print(cd.selecionar(2));
 	
 	%>
   
@@ -424,8 +424,15 @@
                 </div>
                 <!-- Card�pio Modal - Imagem -->
                 <img class="img-fluid rounded mb-5" src="imagens/icones/DogBibinha.jpg" alt="">
-                <!-- Card�pio Modal - Texto -->
-                <p class="mb-5">Um texto aqui</p>
+
+ <!--Tabela cardapio-->
+	
+	<%
+	
+	out.print(cd.selecionar(3));
+	
+	%>
+
                 <button class="btn btn-primary" href="#" data-dismiss="modal">
                   <i class="fas fa-times fa-fw"></i>
                   Fechar
@@ -463,8 +470,16 @@
                 </div>
                 <!-- Card�pio Modal - Imagem -->
                 <img class="img-fluid rounded mb-5" src="imagens/icones/dogCentenario.jpg" alt="">
-                <!-- Card�pio Modal - Texto -->
-                <p class="mb-5">Algo aqui tb</p>
+
+ <!--Tabela cardapio-->
+	
+	<%
+	
+	out.print(cd.selecionar(4));
+	
+	%>
+
+
                 <button class="btn btn-primary" href="#" data-dismiss="modal">
                   <i class="fas fa-times fa-fw"></i>
                   Fechar
